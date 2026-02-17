@@ -15,7 +15,8 @@ describe('Orange HRM Tests', () => {
     myInfoLastName: '[name="lastName"]',
     myInfoGenericName: '.oxd-input',
     myInfoDates: "[placeholder='yyyy-dd-mm']",
-    myInfoDatesCloseButton: "[data-v-4a95a2e0='']"
+    myInfoDatesCloseButton: "[data-v-4a95a2e0='']",
+    myInfoSaveButton: "[type='submit']"
    
   }
 
@@ -35,6 +36,9 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorsList.myInfoGenericName).eq(6).clear().type('Driver License Number test')
     cy.get(selectorsList.myInfoDates).eq(0).clear().type('2026-12-01')
     cy.get(selectorsList.myInfoDatesCloseButton).eq(9).click()
+    cy.get(selectorsList.myInfoSaveButton).eq(0).click()
+    cy.get('body').should('contain', 'Successfully Updated')
+    cy.get('.oxd-toast-close')
   })
    it('Login fail', () => {
     cy.visit('/auth/login')
